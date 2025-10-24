@@ -1,0 +1,128 @@
+* { margin: 0;padding: 0;box-sizing: border-box;
+}
+/* CSS HEX, the color pallete i used, credit https://coolors.co/405566-afeeee-f1eadc-e5c1b7-e7afc0
+--charcoal: #405566; celeste: #afeeeeff; alabaster: #f1eadcff;pale-dogwood: #e5c1b7ff;orchid-pink: #e7afc0ff;*/
+:root{
+--bgcol:#e3e3e3bb;
+--textcol:#405566;
+}
+        body { /*accesare dupa  tip*/                    
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--textcol);
+            background:var(--bgcol) ;
+        }
+
+        nav {
+            background: #afeeee;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #40556611;
+        }
+
+        nav div {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #h1 {/*accesare dupa  id */    
+            font-size: 1.3rem;
+            font-weight: normal;
+            color:  var(--textcol);
+        }
+
+        nav ul { /*accesare dupa  element continut */    
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a { /*accesare dupa  element copil   */    
+            text-decoration: none;
+            color: var(--textcol);
+        }
+
+        nav a:hover {  /*accesare dupa  pseudoselector    */    
+            color:  #e7afc0ff;
+           
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+        }
+
+        section {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e8dfd5;
+        }
+
+
+        h2 {
+            font-size: 2rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color:  var(--textcol);
+        }
+
+        intro>p {
+             color:  (--textcol);
+        }
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #6b6b6b;
+        }
+
+        .about {
+            padding: 2rem 0;
+        }
+
+        .essay {
+            padding: 2rem 0;
+            border-bottom: 0px solid #e8dfd5;
+        }
+
+        .essay:last-child { /*accesare dupa al n-ulea care apare  */    
+            border-bottom: none;
+        }
+
+        .essay h3 {
+            font-size: 1.3rem;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+        }
+
+        .essay-date {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 0.8rem;
+        }
+
+       .post {
+        color: inherit; 
+        text-decoration: inherit; 
+        }
+        .sep { 
+         border-bottom: 1px solid #e8dfd5;
+        }
+      
