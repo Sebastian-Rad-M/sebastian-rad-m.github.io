@@ -1,2 +1,9 @@
 li:not(nav li){margin-left: 2rem;}
 h2 {font-size: 1.9rem;}
+.imag {float: right; height: 60vh;}
+.imag2 {float: right; height: 40vh;}
+.imag3 {float: right; height: 35vh;}
+.imag4 { height: 30vh;}
+.imag5 { height: 35vh;}
+.fig5 {float: right; height: 40vh;}
+.imag6 {float: inline-end; height: 35vh;}
