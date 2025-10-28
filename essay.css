@@ -1,53 +1,45 @@
-    li:not(nav li){margin-left: 2rem;}
-    h2 {font-size: 1.9rem;}
+li:not(nav li){margin-left: 2rem;}
+h2 {font-size: 1.9rem;}
 
-    /*so i will be using grid*/
-    article {
-    display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    gap: 0.5 rem;
-    align-items: start;
-    }
-    article > * {
-    grid-column: col-start / span 12;
-    }
-    img {margin: auto;}
-    .Poster + p {grid-column: col-start / span 7;
-        grid-row: 6;}
-    .Red_Q + p { grid-column: col-start / span 7;
-        grid-row: 18;}
-    .Slurpee + p { grid-column: col-start / span 9;
-        grid-row: 38;}
-    .G_Inq + p { grid-column: col-start / span 8;
-        grid-row: 32;}
-    .Paradise + p {grid-column: col-start / span 7;
-        grid-row: 56; }
+/*so i will be using grid*/
+article {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+   gap: 0.5 rem;
+  align-items: start;
+}
+article > * {
+   grid-column: col-start / span 12;
+}
+img {margin: auto;}
+.Poster + p {grid-column: col-start / span 7;
+    grid-row: 6;}
+.Red_Q + p { grid-column: col-start / span 7;
+    grid-row: 18;}
+.Slurpee + p { grid-column: col-start / span 9;
+    grid-row: 38;}
+.G_Inq + p { grid-column: col-start / span 8;
+    grid-row: 32;}
+.Paradise + p {grid-column: col-start / span 7;
+    grid-row: 56; }
 
-    .Poster { height: 25rem; grid-column: col-start 8 / span 4;
-        grid-row: 6;margin-left: 2rem;}
-    .Red_Q { height: 20rem; grid-column: col-start 8 / span 4;
-        grid-row: 18;margin-left: 2rem;}
-    .Slurpee { height: 19rem;grid-column: col-start 10 / span 2;
-        grid-row: 38; margin-left: 2rem;}
-    .Egy { height: 18rem; }
-    .G_Inq { height: 20rem;grid-column: col-start 9 / span 3;
-        grid-row: 32;margin-left: 2rem;}
-    .Paradise {height: 20rem; grid-column: col-start 8/ span 4;
-        grid-row: 56;margin-left: 2rem;}
- 
+.Poster { height: 25rem; grid-column: col-start 8 / span 4;
+    grid-row: 6;margin-left: 2rem;}
+.Red_Q { height: 20rem; grid-column: col-start 8 / span 4;
+    grid-row: 18;margin-left: 2rem;}
+.Slurpee { height: 19rem;grid-column: col-start 10 / span 2;
+    grid-row: 38; margin-left: 2rem;}
+.Egy { height: 18rem; }
+.G_Inq { height: 20rem;grid-column: col-start 9 / span 3;
+    grid-row: 32;margin-left: 2rem;}
+.Paradise {height: 20rem; grid-column: col-start 8/ span 4;
+    grid-row: 56;margin-left: 2rem;}
+   
  @media (max-width: 768px) {
-  article {
-    grid-template-columns: 1fr;
+  article  {display: block;}
+  article > * {
+   grid-column: col-start / span 12 !important;
   }
-  
-  article > *,
-  .Poster,
-  .Red_Q,
-  .Slurpee,
-  .Egy,
-  .G_Inq,
-  .Paradise {
-    grid-column: 1;
-  }
+  article > img {margin: auto;}
   
 }
