@@ -39,9 +39,10 @@ img {margin: auto;}
   article  {display: block;}
   article > * {
    grid-column: col-start / span 12 !important;
-    margin-left: 0rem;
+    margin-left: 0;
   }
   article > img {margin: auto;}
   
 }
+
 
