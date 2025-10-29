@@ -5,6 +5,7 @@
 :root{
 --bgcol:#e3e3e3bb;
 --textcol:#405566;
+--bleu:#afeeee;
 }
         body { /*accesare dupa  tip*/                    
             font-family: Georgia, serif;
@@ -14,7 +15,7 @@
         }
 
         nav {
-            background: #afeeee;
+            background: var(--bleu);
             padding: 1.5rem 0;
             border-bottom: 1px solid #40556611;
         }
@@ -126,16 +127,39 @@
          border-bottom: 1px solid #e8dfd5;
         }
       
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 130px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-}
+         .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--bleu);     
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
 
+        .dropdown-content a {
+            text-decoration: none;
+            color: var(--textcol);
+            padding: 0.8rem;
+            display: block;
+        }
+
+
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Optional: Add an arrow indicator */
+        .dropdown > a::after {
+            content: " ▼";
+            font-size: 0.7em;
+        }
