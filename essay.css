@@ -34,16 +34,12 @@ img {margin: auto;}
     grid-row: 32;margin-left: 2rem;}
 .Paradise {height: 20rem; grid-column: col-start 8/ span 4;
     grid-row: 56;margin-left: 2rem;}
-   
+ 
  @media (max-width: 768px) {
   article  {display: block;}
   article > * {
    grid-column: col-start / span 12 !important;
-    margin-left: 0 !important;
   }
   article > img {margin: auto;}
   
 }
-
-
-
