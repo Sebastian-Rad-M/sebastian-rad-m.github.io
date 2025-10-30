@@ -6,6 +6,7 @@
 --bgcol:#e3e3e3bb;
 --textcol:#405566;
 --bleu:#afeeee;
+--linkHov:#e7afc0ff;
 }
         body { /*accesare dupa  tip*/                    
             font-family: Georgia, serif;
@@ -47,7 +48,7 @@
         }
 
         nav a:hover {  /*accesare dupa  pseudoselector    */    
-            color:  #e7afc0ff;
+            color: var(--linkHov) ;
            
         }
 
@@ -163,3 +164,37 @@
             content: " ▼";
             font-size: 0.7em;
         }
+        /*!!!! reduced motion*/
+        a {
+  color: #222;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: var(--linkHov);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+@keyframes sweep {
+  from { background-size: 0% 100%;font-size: 2rem; }
+  to { background-size: 100% 100%;font-size:  1.1rem; }
+}
+
+blockquote {
+  display: inline;
+  background-image: linear-gradient(120deg, #afeeee 0%, #cef3f3 100%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  animation: sweep 3s ease forwards;
+}
