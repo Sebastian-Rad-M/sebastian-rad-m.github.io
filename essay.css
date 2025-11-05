@@ -5,7 +5,7 @@ h2 {font-size: 1.9rem;}
 article {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
-   gap: 0.5 rem;
+   gap: 0.2rem;
   align-items: start;
 }
 article > * {
@@ -29,7 +29,7 @@ img {margin: auto;}
     grid-row: 18;margin-left: 2rem;}
 .Slurpee { height: 19rem;grid-column: col-start 10 / span 2;
     grid-row: 38; margin-left: 2rem;}
-.Egy { height: 18rem; }
+.Egy { height: 30vh; }
 .G_Inq { height: 20rem;grid-column: col-start 9 / span 3;
     grid-row: 32;margin-left: 2rem;}
 .Paradise {height: 20rem; grid-column: col-start 8/ span 4;
@@ -41,5 +41,5 @@ img {margin: auto;}
    grid-column: col-start / span 12 !important;
   }
   article > img {margin: auto;}
-  
+  .Egy { display: none; }
 }

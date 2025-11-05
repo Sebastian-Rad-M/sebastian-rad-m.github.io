@@ -58,7 +58,7 @@
             padding: 3rem 20px;
         }
 
-        section {
+        .content {
             background: white;
             padding: 3rem;
             margin-bottom: 2rem;
@@ -74,7 +74,7 @@
         }
 
         intro>p {
-             color:  (--textcol);
+             color:  var(--textcol);
         }
         p {
             margin-bottom: 1.2rem;
@@ -133,7 +133,6 @@
             display: inline-block;
         }
 
-        /* Dropdown content (hidden by default) */
         .dropdown-content {
             display: none;
             position: absolute;
@@ -154,16 +153,11 @@
 
 
 
-        /* Show the dropdown menu on hover */
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        /* Optional: Add an arrow indicator */
-        .dropdown > a::after {
-            content: " ▼";
-            font-size: 0.7em;
-        }
+       
         /*!!!! reduced motion*/
         a {
   color: #222;
@@ -197,4 +191,14 @@ blockquote {
   background-repeat: no-repeat;
   background-size: 0% 100%;
   animation: sweep 3s ease forwards;
+}
+#contact {column-count: 2;}
+@media (prefers-reduced-motion: reduce) {
+  .blockquote {
+    animation: none;
+  }
+}
+ @media (max-width: 768px) {
+  #h1 {display: none;}
+  .dropdown-content {display: none !important;}
 }
