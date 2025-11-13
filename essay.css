@@ -33,10 +33,11 @@ img:not(.exception) {margin: auto; height: 20rem;margin-left: 2rem;}
   article > * {
    grid-column: col-start / span 12 !important;
   }
-  img { margin:1.5rem; margin-left: -30px ! important;}
+  img { margin:1.5rem; margin-left: -30px !important;}
   .Egy { display: none; }
 
 }
+
 
 
 
