@@ -27,6 +27,7 @@ img:not(.exception) {margin: auto; height: 20rem;margin-left: 2rem;}
 .Egy { height: 30vh; margin: auto;}
 
 
+
  
  @media (max-width: 768px) {
   article  {display: block;}
@@ -37,9 +38,6 @@ img:not(.exception) {margin: auto; height: 20rem;margin-left: 2rem;}
   .Egy { display: none; }
 
 }
-
-
-
 
 
 
