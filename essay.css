@@ -33,6 +33,7 @@ img:not(.exception) {margin: auto; height: 20rem;margin-left: 2rem;}
   article > * {
    grid-column: col-start / span 12 !important;
   }
-  article > img {margin: auto;}
+  article > img {margin: 0px;}
   .Egy { display: none; }
+
 }
