@@ -7,6 +7,7 @@
 --textcol:#405566;
 --bleu:#afeeee;
 --linkHov:#e7afc0ff;
+--offwhite:#fafafa;
 }
         body { /*accesare dupa  tip*/                    
             font-family: Georgia, serif;
@@ -59,7 +60,7 @@
         }
 
         .content {
-            background: white;
+            background: var(--offwhite);
             padding: 3rem;
             margin-bottom: 2rem;
             border: 1px solid #e8dfd5;
@@ -124,6 +125,11 @@
         color: inherit; 
         text-decoration: inherit; 
         }
+        /* .post>.essay:hover
+        {   
+             background-color: rgb(244, 244, 244);
+             border-radius: 1rem;
+        } */
         .sep { 
          border-bottom: 1px solid #e8dfd5;
         }
@@ -151,7 +157,15 @@
             display: block;
         }
 
-
+        button {
+            cursor: pointer;
+            background-color:#405566;
+            color: white;
+            border: none;
+            margin-top: 3rem;
+            border-radius: 5px;
+            z-index: 5;
+        }
 
         .dropdown:hover .dropdown-content {
             display: block;
@@ -189,7 +203,7 @@
         from { background-size: 0% 100%;font-size: 2rem; }
         to { background-size: 100% 100%;font-size:  1.1rem; }
         }
-
+        
         blockquote {
         display: inline;
         background-image: linear-gradient(120deg, #afeeee 0%, #cef3f3 100%);

@@ -5,30 +5,36 @@ h2 {font-size: 1.9rem;}
 article {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
-   gap: 0.2rem;
+  gap: 0.2rem;
   align-items: start;
-    grid-auto-flow: row dense;
+  grid-auto-flow: row dense;
 }
 article > * {
    grid-column: col-start / span 12;
 }
 img:not(.exception) {margin: auto; height: 20rem;margin-left: 2rem;}
 .heathers {height: 25rem !important;}
+.DMIZ {height:20rem !important;  transition: transform 0.3s ease;}
+#mytext{margin: 0px 50px;}
 
+.insider {
+ display: grid;
+grid-template-rows: 1fr 1fr;           
+ max-height: 20rem;
+
+}
 .Poster { grid-column: col-start 8 / span 4;}
-.Poster + p {grid-column: col-start / span 7;}
-
-.Slurpee {grid-column: col-start 10 / span 2;}
-.Slurpee + p { grid-column: col-start / span 9;}
+.Poster + p {grid-column: col-start / span 7;z-index: 3;}
 
 .G_Inq { grid-column: col-start 9 / span 3;}
 .G_Inq + p { grid-column: col-start / span 8;}
 
+.Slurpee {grid-column: col-start 10 / span 2;}
+.Slurpee + p { grid-column: col-start / span 9;}
 .Egy { height: 30vh; margin: auto;}
+#Ghoti { height: 30vh; grid-column: col-start / span 11; }
+#Ichthys { height: 19vh; }
 
-
-
- 
  @media (max-width: 768px) {
   article  {display: block;}
   article > * {
