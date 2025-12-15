@@ -31,9 +31,9 @@ grid-template-rows: 1fr 1fr;
 
 .Slurpee {grid-column: col-start 10 / span 2;}
 .Slurpee + p { grid-column: col-start / span 9;}
-.Egy { height: 30vh; margin: auto;}
-#Ghoti { height: 30vh; grid-column: col-start / span 11; }
-#Ichthys { height: 19vh; }
+.Egy { height: 30rem; margin: auto;}
+#Ghoti { height: 30rem; grid-column: col-start / span 11; }
+#Ichthys { height: 19rem; }
 
  @media (max-width: 768px) {
   article  {display: block;}
@@ -44,6 +44,7 @@ grid-template-rows: 1fr 1fr;
   .Egy { display: none; }
 
 }
+
 
 
 
