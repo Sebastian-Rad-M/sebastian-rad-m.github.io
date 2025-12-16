@@ -35,14 +35,17 @@ grid-template-rows: 1fr 1fr;
 #Ghoti { height: 20rem; grid-column: col-start / span 11; }
 #Ichthys { height: 13rem; }
 
- @media (max-width: 768px) {
+@media (max-width: 768px) {
   article  {display: block;}
   article > * {
    grid-column: col-start / span 12 !important;
   }
-  img { margin:1.5rem; margin-left: -30px !important;}
+  .insider {min-height: 30rem; }
+  button {padding: 0.5rem;  }
+  .phone-special {display: block; height: 2rem; } 
+  img:not(.DMIZ){margin-left: -10px !important; height: 20rem !important; max-width: 100% !important; }
   .Egy { display: none; }
-
+  .DMIZ { margin-left: -10px !important;height: 15rem !important;}
 }
 
 
