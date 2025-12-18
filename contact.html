@@ -7,47 +7,43 @@
     <link rel="stylesheet" href="stylesheet.css"> 
 </head>
 <body>
-     <nav>
+    <nav>
         <div>
-            <h1 id="h1">Sebastian's archive</h1>
+            <h1 id="title">Sebastian's archive</h1>
             <ul>
-                <li><a href="index.html">Home</a></li>
-              <li class="dropdown">
-                    <a href="essays.html">Essays ▼</a>
+               <li><a href="index.html">Home</a></li>
+               <li class="dropdown">
+                    <a href="essays.html">Essays <span id="dropdown-triangle">▼</span></a>
                     <div class="dropdown-content">
-                     <a href="bp1.html">Heathers Archetypal Analysis</a>
+                        <a href="bp1.html">Heathers Archetypal Analysis</a>
                         <a href="bp2.html">Henry Miller review</a>
-                        <a href="bp3.html">Mural</a>
+                        <a href="bp3.html">Ghoti Breakdown</a>
                     </div>
                 </li>
-            
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
+
      <main>
         
         <div class="content" id="contact">
-           <p>Email me at: sebastian.mihail.raducu@gmail.com. the form bellow IS NOT WORKING YET</p>
-            <form>
-                <div>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+           <div class="contact-container">
+                <h2>Get in Touch</h2>
+                <p>Have questions about my essays or just want to say hello? I'd love to hear from you.</p>
+                
+                <a href="mailto:sebastian.mihail.raducu@gmail.com" id="emailBtn" class="contact-btn">
+                    Send me an Email
+                </a>
+                
+                <p>Or copy my address directly:</p>
+                
+                <div class="email-display">
+                    sebastian.mihail.raducu@gmail.com
                 </div>
-
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-
-                <button type="submit">Send Message</button>
-            </form>
+            </div>
         </div>
+        <script src="interaction.js"></script>
 </main>
 </body>
 </html>

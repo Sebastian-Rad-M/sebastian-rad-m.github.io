@@ -1,51 +1,42 @@
-li:not(nav li){margin-left: 2rem;}
-h2 {font-size: 1.9rem;}
+    img {height: 20rem;}    
+    #heathers {height: 25rem;}
+    #DMIZ { transition: transform 0.3s ease;}
+    #egyptian {  width: 100%; height: auto; }
+    #ghoti { width: 80%; height: auto;}
+    .insider {
+    display: grid;
+    grid-template-rows: 1fr 1fr;           
+    max-height: 20rem;
+    }
+    button {padding: 1rem; height: 4rem; }
+    @media (min-width: 768px) {
+      article {
+      display: grid;/*so i will be using grid, fml*/
+      grid-template-columns: repeat(12, [col-start] 1fr);
+      gap: 0.2rem;
+      align-items: start;
+      grid-auto-flow: row dense;
+    }
+    article > * {
+      grid-column: col-start / span 12;
+      
+    } 
+    
+  
+    .G8 { grid-column: col-start 8 / span 4; margin-left: 2rem;}
+    .G8 + p {grid-column: col-start / span 7;z-index: 3;}
 
-/*so i will be using grid, fml*/
-article {
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  gap: 0.2rem;
-  align-items: start;
-  grid-auto-flow: row dense;
-}
-article > * {
-   grid-column: col-start / span 12;
-}
-img:not(.exception) {margin: auto; height: 20rem;margin-left: 2rem;}
-.heathers {height: 25rem !important;}
-.DMIZ {height:20rem !important;  transition: transform 0.3s ease;}
-#mytext{margin: 0px 50px;}
+    .G9 { grid-column: col-start 9 / span 3;margin-left: 2rem;}
+    .G9 + p { grid-column: col-start / span 8;}
 
-.insider {
- display: grid;
-grid-template-rows: 1fr 1fr;           
- max-height: 20rem;
-
-}
-.Poster { grid-column: col-start 8 / span 4;}
-.Poster + p {grid-column: col-start / span 7;z-index: 3;}
-
-.G_Inq { grid-column: col-start 9 / span 3;}
-.G_Inq + p { grid-column: col-start / span 8;}
-
-.Slurpee {grid-column: col-start 10 / span 2;}
-.Slurpee + p { grid-column: col-start / span 9;}
-.Egy { height: 30rem; margin: auto;}
-#Ghoti { height: 20rem; grid-column: col-start / span 11; }
-#Ichthys { height: 13rem; }
-
+    .G10 { grid-column: col-start 10 / span 2;margin-left: 2rem;}
+    .G10 + p { grid-column: col-start / span 9;}
+  }
 @media (max-width: 768px) {
   article  {display: block;}
-  article > * {
-   grid-column: col-start / span 12 !important;
-  }
-  .insider {min-height: 30rem; }
-  button {padding: 0.5rem;  }
+  .insider {min-height: 23rem; }
   .phone-special {display: block; height: 2rem; } 
-  img:not(.DMIZ){margin-left: -10px !important; height: 20rem !important; max-width: 100% !important; }
-  .Egy { display: none; }
-  .DMIZ { margin-left: -10px !important;height: 15rem !important;}
+  
 }
 
 

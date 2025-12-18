@@ -1,27 +1,27 @@
-* { margin: 0;padding: 0;box-sizing: border-box;
-}
-/* CSS HEX, the color pallete i used, credit https://coolors.co/405566-afeeee-f1eadc-e5c1b7-e7afc0
---charcoal: #405566; celeste: #afeeeeff; alabaster: #f1eadcff;pale-dogwood: #e5c1b7ff;orchid-pink: #e7afc0ff;*/
-:root{
---bgcol:#e3e3e3bb;
---textcol:#405566;
---bleu:#afeeee;
---linkHov:#e7afc0ff;
---offwhite:#fafafa;
-}
-        body { /*accesare dupa  tip*/                    
+        * { margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--textcol);
+        }
+        :root{
+            --bgcol:#e3e3e3bb;
+            --sidebgcol:#fafafa;
+            --accentbgcol:#e8dfd5;
+            --textcol:#405566;
+            --maincol:#afeeee;
+            --sidecol:#cef3f3;
+            --linkHov:#e7afc0ff;
+            }
+        body {                    
             font-family: Georgia, serif;
             line-height: 1.7;
-            color: var(--textcol);
             background:var(--bgcol) ;
         }
-
         nav {
-            background: var(--bleu);
+            background: var(--maincol);
             padding: 1.5rem 0;
             border-bottom: 1px solid #40556611;
         }
-
         nav div {
             max-width: 900px;
             margin: 0 auto;
@@ -31,28 +31,34 @@
             align-items: center;
         }
 
-        #h1 {/*accesare dupa  id */    
+        #title {    
             font-size: 1.3rem;
             font-weight: normal;
-            color:  var(--textcol);
         }
 
-        nav ul { /*accesare dupa  element continut */    
+        nav ul {    
             display: flex;
             gap: 2rem;
             list-style: none;
         }
 
-        nav a { /*accesare dupa  element copil   */    
+        nav a {    
             text-decoration: none;
             color: var(--textcol);
         }
 
-        nav a:hover {  /*accesare dupa  pseudoselector    */    
+        nav a:hover {
             color: var(--linkHov) ;
-           
         }
-
+        #dropdown-triangle {
+            transition: color 0.2s ease 0.1s;   
+        }
+        .dropdown a:hover #dropdown-triangle {
+         color: var(--linkHov);
+        }
+        li:not(nav li){
+        margin-left: 2rem;
+        }
         main {
             max-width: 900px;
             margin: 0 auto;
@@ -60,55 +66,25 @@
         }
 
         .content {
-            background: var(--offwhite);
+            background: var(--sidebgcol);
             padding: 3rem;
             margin-bottom: 2rem;
-            border: 1px solid #e8dfd5;
+            border: 1px solid var(--accentbgcol);
         }
-
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.9rem;
             font-weight: normal;
             margin-bottom: 2rem;
-            color:  var(--textcol);
         }
-
-        intro>p {
-             color:  var(--textcol);
-        }
-        p {
-            margin-bottom: 1.2rem;
-        }
-
-        .intro {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .intro h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .intro p {
-            font-size: 1.1rem;
-            color: #6b6b6b;
-        }
-
-        .about {
+        #about {
             padding: 2rem 0;
         }
 
         .essay {
             padding: 2rem 0;
-            border-bottom: 0px solid #e8dfd5;
+            border-bottom: 0px solid var(--accentbgcol);
         }
-
-        .essay:last-child { /*accesare dupa al n-ulea care apare  */    
-            border-bottom: none;
-        }
-
         .essay h3 {
             font-size: 1.3rem;
             font-weight: normal;
@@ -121,20 +97,12 @@
             margin-bottom: 0.8rem;
         }
 
-       .post {
-        color: inherit; 
-        text-decoration: inherit; 
-        }
-        /* .post>.essay:hover
-        {   
-             background-color: rgb(244, 244, 244);
-             border-radius: 1rem;
-        } */
+       
         .sep { 
-         border-bottom: 1px solid #e8dfd5;
+         border-bottom: 1px solid var(--accentbgcol);
         }
       
-         .dropdown {
+        .dropdown {
             position: relative;
             display: inline-block;
         }
@@ -142,7 +110,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background: var(--bleu);     
+            background: var(--maincol);     
             min-width: 300px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -199,11 +167,11 @@
         a:hover::after {
         width: 100%;
         }
-        @keyframes sweep {
-        from { background-size: 0% 100%;font-size: 2rem; }
-        to { background-size: 100% 100%;font-size:  1.1rem; }
-        }
-        
+
+        .contact-container {
+            text-align: center;
+        }      
+
         blockquote {
         display: inline;
         background-image: linear-gradient(120deg, #afeeee 0%, #cef3f3 100%);
@@ -211,13 +179,55 @@
         background-size: 0% 100%;
         animation: sweep 3s ease forwards;
         }
+
         #contact {column-count: 2;}
+        article p {
+        margin-bottom: 1.2rem;
+        }
+       .contact-btn {
+            display: inline-block;
+            cursor: pointer;
+            background-color:var(--textcol);
+            color: var(--accentbgcol);
+            padding: 1.5rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            color: var(--sidebgcol); /* Lighter on hover */
+        }
+
+        .email-display {
+            font-family: monospace;
+            background-color: var(--bgcol);
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        img { 
+            margin: auto;
+             display: block;
+        }
         @media (prefers-reduced-motion: reduce) {
-        .blockquote {
-            animation: none;
+        a:hover::after { width: 0; }
         }
-        }
+
         @media (max-width: 768px) {
-        #h1 {display: none;}
+        #title {font-size: 1.4rem;}
+        nav ul {gap: 1rem;}
+        nav div {flex-direction: column; align-items: flex-start; gap: 1rem;}
+        main {padding: 2rem 10px;} 
+        #contact {column-count: 1;} 
         .dropdown-content {display: none !important;}
+        #dropdown-triangle {display: none;}
         }
+
+       
+       
+       
+        
+  
