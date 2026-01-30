@@ -19,5 +19,12 @@
         "date": "December 2025",
         "description": "Fish. An in-depth look at Lupe Fiasco's song and its lyrical brilliance.",
         "link": "bp3.html"
+    },
+    {
+        "id": 4,
+        "title": "Heathers II",
+        "date": "January 2026",
+        "description": "The follow up essay to An archetypal analysis of The Heathers, focusing on specific elements of the monomyth and Jung",
+        "link": "bp4.html"
     }
 ]

@@ -1,13 +1,14 @@
     img {height: 20rem;}    
     #heathers {height: 25rem;}
     #DMIZ { transition: transform 0.3s ease;}
-    #egyptian {  width: 100%; height: auto; }
+    
     #ghoti { width: 80%; height: auto;}
     .insider {
     display: grid;
     grid-template-rows: 1fr 1fr;           
     max-height: 20rem;
     }
+    #regained_banner {margin-top: 2rem;}
     button {padding: 1rem; height: 4rem; }
     @media (min-width: 768px) {
       article {
@@ -22,7 +23,7 @@
       
     } 
     
-  
+    .Full {  width: 100%; height: auto; }
     .G8 { grid-column: col-start 8 / span 4; margin-left: 2rem;}
     .G8 + p {grid-column: col-start / span 7;z-index: 3;}
 
@@ -40,8 +41,4 @@
   .phone-special {display: block; height: 2rem; } 
   
 }
-
-
-
-
 

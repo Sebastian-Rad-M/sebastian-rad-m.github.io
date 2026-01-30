@@ -172,14 +172,26 @@
             text-align: center;
         }      
 
-        blockquote {
-        display: inline;
-        background-image: linear-gradient(120deg, #afeeee 0%, #cef3f3 100%);
-        background-repeat: no-repeat;
-        background-size: 0% 100%;
-        animation: sweep 3s ease forwards;
+       blockquote {
+            display: block;
+            margin: 1rem auto;       
+            max-width: 80%;         
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--textcol);   
+            line-height: 1.6;
+            padding: 0 1rem;     
         }
-
+        blockquote cite {
+            display: block;       
+            margin-top: 1rem;       
+            font-size: 0.9rem;      
+            font-style: normal;      
+            font-weight: bold;      
+            color: var(--textcol);   
+            opacity: 0.8;          
+        }
         #contact {column-count: 2;}
         article p {
         margin-bottom: 1.2rem;
@@ -210,13 +222,15 @@
         }
         img { 
             margin: auto;
-             display: block;
+            display: block;
         }
+        .top_space {margin-top: 3rem;}
         @media (prefers-reduced-motion: reduce) {
         a:hover::after { width: 0; }
         }
 
         @media (max-width: 768px) {
+        blockquote { max-width: 100%; }
         #title {font-size: 1.4rem;}
         nav ul {gap: 1rem;}
         nav div {flex-direction: column; align-items: flex-start; gap: 1rem;}
