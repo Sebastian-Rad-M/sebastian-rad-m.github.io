@@ -4,34 +4,54 @@
         "title": "An archetypal analysis of \"The Heathers\"",
         "date": "October 2025",
         "description": "A deeper look into what makes a story, the fundamental archetypes present and the balance of chaos and order.",
-        "link": "bp1.html"
+        "link": "bp1.html",
+        "tags": [
+            "Jung",
+            "Theatre"
+        ]
     },
     {
         "id": 2,
         "title": "A review of Henry Miller and his style",
         "date": "November 2025",
         "description": "An exploration of Henry Miller's uniqueness and his literary impact.",
-        "link": "bp2.html"
+        "link": "bp2.html",
+        "tags": [
+            "Literature",
+            "Review"
+        ]
     },
     {
         "id": 3,
         "title": "Ghoti",
         "date": "December 2025",
         "description": "Fish. An in-depth look at Lupe Fiasco's song and its lyrical brilliance.",
-        "link": "bp3.html"
+        "link": "bp3.html",
+        "tags": [
+            "Music"
+        ]
     },
     {
         "id": 4,
         "title": "Heathers II",
         "date": "January 2026",
         "description": "The follow up essay to An archetypal analysis of The Heathers, focusing on specific elements of the monomyth and Jung",
-        "link": "bp4.html"
+        "link": "bp4.html",
+        "tags": [
+            "Jung",
+            "Theatre"
+        ]
     },
     {
         "id": 5,
         "title": "Love: A Crossing of Aims",
         "date": "February 2026",
-        "description": "An analysis of Jean-Luc Marion's <<Intentionality of love>> and how it maps onto colective definitions ",
-        "link": "bp5.html"
+        "description": "An analysis of Jean-Luc Marion's Intentionality of love and how it maps onto collective definitions",
+        "link": "bp5.html",
+        "tags": [
+            "Philosophy",
+            "Literature",
+            "Review"
+        ]
     }
 ]

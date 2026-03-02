@@ -1,0 +1,384 @@
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+}
+
+.cv-name {
+    font-size: 2.2rem;
+    font-weight: normal;
+    color: var(--textcol);
+}
+
+.cv-tagline {
+    font-size: 0.95rem;
+    color: var(--datecol);
+    font-style: italic;
+}
+
+.cv-contact-block {
+    text-align: right;
+}
+
+.cv-contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cv-contact-list li {
+    color: var(--textcol);
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.4rem;
+}
+
+.cv-icon {
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.cv-sep {
+    border-top: 1px solid var(--accentbgcol);
+    margin: 0.5rem 0 1.5rem;
+}
+
+.cv-body {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 2.5rem;
+}
+
+.cv-section {
+    margin-bottom: 2rem;
+}
+
+.cv-section-title {
+    color: var(--datecol);
+    border-bottom: 1px solid var(--accentbgcol);
+}
+
+
+.cv-entry {
+    margin-bottom: 1.4rem;
+}
+
+.cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.15rem;
+}
+
+.cv-entry-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--textcol);
+}
+
+.cv-entry-date {
+    font-size: 0.82rem;
+    color: var(--datecol);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.cv-entry-sub {
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--datecol);
+    margin-bottom: 0.4rem;
+}
+
+.cv-entry-bullets {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.cv-entry-bullets li {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 0.2rem;
+    margin-left: 0;
+    list-style: disc;
+}
+
+
+
+
+.skill-group-label {
+    font-weight: bold;
+    color: var(--datecol);
+    margin-bottom: 0.4rem;
+    font-style: normal;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.skill-list li {
+    margin-left: 0;
+}
+
+.skill-tag {
+    background: var(--maincol);
+    color: var(--textcol);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.lang-list {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.lang-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.lang-name {
+    font-weight: bold;
+    color: var(--textcol);
+}
+
+.lang-level {
+    color: var(--datecol);
+    font-style: italic;
+}
+
+.cv-print-bar {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--accentbgcol);
+    text-align: right;
+}
+
+.cv-download-btn {
+    background-color: var(--textcol);
+    color: var(--sidebgcol);
+    padding: 0.65rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.cv-download-btn:hover {
+    background-color: var(--accentbgcol);
+    color: var(--textcol);
+}
+
+
+@media (max-width: 640px) {
+    .cv-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cv-contact-block {
+        text-align: left;
+    }
+
+    .cv-contact-list li {
+        justify-content: flex-start;
+    }
+
+    .cv-body {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-sidebar {
+        order: 2;
+    }
+
+    .cv-main {
+        order: 1;
+    }
+
+    .cv-name {
+        font-size: 1.7rem;
+    }
+}
+
+@media print {
+
+    :root,
+    body,
+    body.dark {
+        --bgcol: #ffffff !important;
+        --sidebgcol: #ffffff !important;
+        --accentbgcol: #cccccc !important;
+        --textcol: #111111 !important;
+        --maincol: #eeeeee !important;
+        --datecol: #444444 !important;
+        --linkHov: #111111 !important;
+    }
+
+    body {
+        background: #ffffff !important;
+        font-size: 10.5pt;
+        line-height: 1.45;
+    }
+
+    nav,
+    .no-print {
+        display: none !important;
+    }
+
+    main {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .cv-wrapper.content {
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 14mm 16mm 14mm 16mm;
+    }
+
+    /* Header */
+    .cv-header {
+        padding-bottom: 0.8rem;
+        gap: 1rem;
+    }
+
+    .cv-name {
+        font-size: 20pt;
+        margin-bottom: 0.2rem;
+    }
+
+    .cv-tagline {
+        font-size: 9.5pt;
+    }
+
+    .cv-contact-list li {
+        font-size: 9pt;
+        gap: 0.35rem;
+    }
+
+    .cv-sep {
+        margin: 0.4rem 0 0.8rem;
+        border-top-color: #cccccc !important;
+    }
+
+    /* Two-column grid */
+    .cv-body {
+        grid-template-columns: 1fr 175pt;
+        gap: 16pt;
+    }
+
+    /* Sections */
+    .cv-section {
+        margin-bottom: 1.1rem;
+    }
+
+    .cv-section-title {
+        font-size: 7.5pt !important;
+        padding-bottom: 0.15rem;
+        margin-bottom: 0.5rem !important;
+        letter-spacing: 0.12em;
+    }
+
+    /* Entries */
+    .cv-entry {
+        margin-bottom: 0.85rem;
+    }
+
+    .cv-entry-header {
+        margin-bottom: 0.1rem;
+        gap: 0.2rem;
+    }
+
+    .cv-entry-title {
+        font-size: 10.5pt;
+    }
+
+    .cv-entry-date {
+        font-size: 9pt;
+    }
+
+    .cv-entry-sub {
+        font-size: 9pt;
+        margin-bottom: 0.25rem;
+    }
+
+    .cv-entry-bullets {
+        padding-left: 1rem;
+    }
+
+    .cv-entry-bullets li {
+        font-size: 9pt;
+        line-height: 1.45;
+        margin-bottom: 0.15rem;
+    }
+
+    /* Sidebar */
+    .skill-group {
+        margin-bottom: 0.75rem;
+    }
+
+    .skill-group-label {
+        font-size: 8.5pt;
+        margin-bottom: 0.3rem;
+    }
+
+    .skill-tag {
+        font-size: 8pt;
+        padding: 0.15rem 0.45rem;
+        background: #f0f0f0 !important;
+        border: 1px solid #cccccc;
+        color: #111111 !important;
+    }
+
+    .skill-list {
+        gap: 0.3rem;
+    }
+
+    .lang-list {
+        gap: 0.3rem;
+    }
+
+    .lang-name {
+        font-size: 10pt;
+    }
+
+    .lang-level {
+        font-size: 8.5pt;
+    }
+
+    .cv-sidebar-text {
+        font-size: 9pt;
+    }
+
+    /* Links */
+    a {
+        color: #111111 !important;
+        text-decoration: none !important;
+    }
+}

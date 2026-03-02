@@ -1,0 +1,40 @@
+{
+  "references": [
+    {
+      "title": "The Brothers Karamazov",
+      "author": "Fyodor Dostoevsky",
+      "description": "Probably the single most important book i could recomand to anyone",
+      "image": "images/Refrences/TBK.png",
+      "alt": "Cover of The brothers karamazov"
+    },
+    {
+      "title": "The Hero with a Thousand faces",
+      "author": "Joseph Campbel",
+      "description": "The book whene it comes to narative analysis. Jung readable by anyone.",
+      "image": "images/Refrences/THWATF.png",
+      "alt": "Cover of The Hero with a Thousand faces"
+    },
+    {
+      "title": "The Gulag Archipelago",
+      "author": "Aleksandr Solzhenitsyn",
+      "description": "My personal go to history book, a skin-crawling history of the soviet prison system and KGB",
+      "image": "images/Refrences/GA.png",
+      "alt": "Cover of The Gulag Archipelago"
+    },
+    {
+      "title": "The Stranger",
+      "author": "Albert Camus",
+      "description": "Could also be <b>The Myth of Sisyphus</b>, one of the important philosophical ideas of the 20th century",
+      "image": "images/Refrences/stranger.png",
+      "alt": "Cover of the book"
+    },
+    {
+      "title": "The Bible",
+      "author": "Various Authors",
+      "description": "SORIN",
+      "image": "images/Refrences/bible.png",
+      "alt": "Cover of the book"
+    }
+    
+  ]
+}

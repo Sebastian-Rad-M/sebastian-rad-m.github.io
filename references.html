@@ -9,13 +9,14 @@
         content="CV of Raducu Mihail-Sebastian, Computer Science student at the University of Bucharest, seeking IT and software development internships.">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="images/Refrences/refrences.css">
     <script src="dark_mode.js" defer></script>
 </head>
 
 <body>
     <nav>
         <div>
-            <h1 id="title"><a href="index.html">Sebastian's archive</a></h1>
+           <h1 id="title"><a href="index.html">Sebastian's archive</a></h1>
             <ul>
                 <li><a href="index.html" class="hov">Home</a></li>
                 <li class="dropdown">
@@ -33,25 +34,16 @@
             </ul>
         </div>
     </nav>
-     <main>
-        
-        <div class="content" id="contact">
-           <div class="contact-container">
-                <h2>Get in Touch</h2>
-                <p>Have questions about my essays or just want to say hello? I'd love to hear from you.</p>
-                
-                <a href="mailto:sebastian.mihail.raducu@gmail.com" id="emailBtn" class="contact-btn" target="_blank">
-                    Send me an Email
-                </a>
-                
-                <p>Or copy my address:</p>
-                
-                <div class="email-display">
-                    sebastian.mihail.raducu@gmail.com
-                </div>
+    <main>
+        <div class="content">
+            <h2>References</h2>
+
+            <div class="ref-grid" id="ref-grid">
+                <!-- Cards are injected dynamically by references.js from references.json -->
             </div>
         </div>
-        <script src="interaction.js"></script>
-</main>
+    </main>
+
+    <script src="references.js"></script>
 </body>
 </html>

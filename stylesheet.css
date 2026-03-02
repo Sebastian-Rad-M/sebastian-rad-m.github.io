@@ -1,3 +1,4 @@
+        /*aplicable to every page*/ /**/
         * { margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -9,8 +10,19 @@
             --accentbgcol:#e8dfd5;
             --textcol:#405566;
             --maincol:#afeeee;
-            --sidecol:#cef3f3;
             --linkHov:#e7afc0ff;
+            --textcol11opacity:#40556611;
+            --datecol:#999999;
+            }
+        body.dark {
+           --bgcol:#313131;
+            --sidebgcol:#293236;
+            --accentbgcol:#b19ca2;
+            --textcol:#cef3f3;
+            --maincol:#405566;
+            --linkHov:#e7afc0ff;
+            --textcol11opacity:#40556611;
+            --datecol:#858585;
             }
         body {                    
             font-family: Georgia, serif;
@@ -20,7 +32,7 @@
         nav {
             background: var(--maincol);
             padding: 1.5rem 0;
-            border-bottom: 1px solid #40556611;
+            border-bottom: 1px solid  var(--textcol11opacity);
         }
         nav div {
             max-width: 900px;
@@ -47,9 +59,10 @@
             color: var(--textcol);
         }
 
-        nav a:hover {
+        nav .hov:hover {
             color: var(--linkHov) ;
         }
+        
         #dropdown-triangle {
             transition: color 0.2s ease 0.1s;   
         }
@@ -77,6 +90,10 @@
             font-weight: normal;
             margin-bottom: 2rem;
         }
+        #essays-title {
+            margin-bottom: 0.4rem;
+
+        }
         #about {
             padding: 2rem 0;
         }
@@ -88,13 +105,14 @@
         .essay h3 {
             font-size: 1.3rem;
             font-weight: normal;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.1rem;
         }
 
         .essay-date {
             font-size: 0.9rem;
-            color: #999;
-            margin-bottom: 0.8rem;
+            color:var(--datecol);
+            margin-bottom: 0.5rem;
+            margin-top: -0.3rem
         }
 
        
@@ -124,7 +142,7 @@
             padding: 0.8rem;
             display: block;
         }
-
+         /*lupe button and contact button i guess*/
         button {
             cursor: pointer;
             background-color:#405566;
@@ -138,7 +156,26 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
+        .theme-toggle {
+            color: var(--maincol);
+            background: var(--textcol);
+            border: 1px solid var(--textcol);
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, border-color 0.3s;
+            line-height: 1;
+        }
+        .theme-toggle:hover {
+            background: var(--accentbgcol);
+        }
        
         a {
         color: #222;
@@ -148,12 +185,12 @@
         }
        
         .ext_link{
-            color:#405566;
+            color:var(--textcol);
             text-decoration: underline;
             }
         .ext_link:hover{color: var(--linkHov) ;}
 
-        nav a::after {
+        nav .hov::after {
         content: "";
         position: absolute;
         width: 0;
@@ -164,14 +201,14 @@
         transition: width 0.3s ease;
         }
 
-        a:hover::after {
+        .hov:hover::after {
         width: 100%;
         }
-
+        /*contact page*/
         .contact-container {
             text-align: center;
         }      
-
+       
        blockquote {
             display: block;
             margin: 1rem auto;       
@@ -183,6 +220,7 @@
             line-height: 1.6;
             padding: 0 1rem;     
         }
+        
         blockquote cite {
             display: block;       
             margin-top: 1rem;       
@@ -218,13 +256,47 @@
             padding: 1rem;
             border-radius: 4px;
             font-size: 0.9rem;
-            color: #333;
+            color: var(--textcol);
         }
         img { 
             margin: auto;
             display: block;
+        } 
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .filter-btn, .tag-badge {
+         background: var(--maincol);
+            color: var(--textcol);        
+            font-size: 0.75rem;
+            padding: 0.15rem 0.55rem; 
+            border: none; border-radius: 10%;
+        }
+        .tag-badge {
+            display: inline-block;
+            margin-right: 0.3rem;
+
+        }
+       
+        .filter-btn {
+            min-width: 2rem;
+            margin-top: 0.1rem;
+            height: 2rem;
+            
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--textcol);
+            color: var(--maincol);
+        }
+        .essay-entry.hidden {
+            display: none;
         }
         .top_space {margin-top: 3rem;}
+
+         /*mobile and a11y*/
         @media (prefers-reduced-motion: reduce) {
         a:hover::after { width: 0; }
         }
