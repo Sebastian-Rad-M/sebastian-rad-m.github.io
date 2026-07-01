@@ -1,0 +1,47 @@
+@import 'tailwindcss-preflight/preflight.css';
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    
+}
+
+:root{
+            --bgcol:#2f2a26;
+            --maincol:#ead38f;
+            --textcol:#e9e4e0;
+            --accent1:#e9e4e0;
+            --accent2:#ccc900;
+            --highlight1:#Afeeee;
+            --lowlight1:#221E1B;
+            }
+:root.light {
+            --bgcol:#2f2a26;
+            --maincol:#ead38f;
+            --accent1:#e9e4e0;
+            --accent2:#ccc900;
+            --highlight1:#Afeeee;
+ } 
+html {
+    background-color: var(--bgcol);
+}
+body {
+    color: var(--textcol);
+    font-size: 2.2rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.divider { 
+    white-space: nowrap;
+      height: 1px;
+      margin: 1rem ;
+      --divider-color: var(--accent1);
+      background-color: var(--divider-color);
+      
+}
