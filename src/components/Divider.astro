@@ -1,0 +1,12 @@
+---
+interface Props {
+    className?: string;
+    color?: string;
+}
+
+const { className = '', color = 'var(--accent1)' } = Astro.props;
+---
+<div class={`divider ${className}`} style={`--divider-color: ${color};`}></div>
+
+<style>
+</style>

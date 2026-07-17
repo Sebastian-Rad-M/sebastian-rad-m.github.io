@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import EssayCard from '../components/EssayCard.astro';
+import Divider from '../components/Divider.astro';
 import { Image } from 'astro:assets';
 import paradiseL from '../assets/siene.png';  
 ---
@@ -11,57 +13,72 @@ import paradiseL from '../assets/siene.png';
         </div>
         <Image src={paradiseL} alt="" class="photo1" />
         
-        <div class="p right">This is the place where i put out my humanities related work.Being a Comp-Sci student doesnt allow me to express too much creativity, so i do essays for fun sometimes. Here you will find the ones i deem acceptable for the light of day.</div>
-        <!-- <div class="" id="">
+        <div class="p right">
+            This is where I keep my non-Comp-Sci projects. Enjoy a royalty free photo of Seine. 
+            <div class="small"> No creative work on any of these pages has been done with any help from AI.</div>
+        </div>
+
+        <div class="featured-section">
              <h2>Featured essay:</h2>
-            <div class="sep"></div>
-            <a href="bp4.html" id="featured-essay" class="essay-link">
-                <div class="essay">
-                    <h3>The Heathers Act II, the journey to the underworld</h3>
-                    <div class="essay-date">January 2026</div>
-                    <p>The follow up essay to An archetypal analysis of The Heathers, focusing on specific elements of the monomyth and Jung</p>
-                </div>
-            </a>
-            <div class="sep "></div>
-            
-             <h2 class="top_space">Writer's note:</h2>
-             <p>While I didn’t get to say everything I had in mind (I especially regret some of the decisions in the first essay, opting to go wide instead of deep on the references makes it read really surface level, while nothing is wrong, I tried too much in not enough space) Writing this was an interesting journey, and I learned a lot while writing this (I realised some act 1 references now, in act 2, like the slushie being a shamanic potion, another symbol of transformation. I tried to hint at it with visual elements in this one (the scrunchie specifically (god I love that line “Still you've earned that red scrunchie, Come join Heather in hell”… such a smart line) I don’t know how a reader would be able to figure it out… maybe I’ll throw in an digression in one of my following essays (that will be on a closely related topic, teaser). Also, the mental gymnastics I had to do to not defend JD’s every action was extraordinary… I didn’t lie in the interpretation, but I skipped all of my “Veronica is not any better than JD” rhetoric. Anyway, i hope you enjoy it.</p>
-           
-        </div> -->
-    </main>
+            <Divider color='#9998a5' className="divInFE" />
+            <EssayCard 
+                title="An archetypal analysis of Heathers, The Musical"
+                date="January 2026"
+                description="bla bla"
+                url="/essays/heathers"
+            />
+        </div>
+            </main>
 </Layout>
 
 <style>
     main{
          display: grid;
          grid-template-columns: repeat(12, 1fr);
-          gap: 0.2rem;
-      align-items: start;
-      grid-auto-flow: row dense;
-    }
+         gap: 0.2rem;
+         align-items: start;
+         grid-auto-flow: row dense;
+        }
     .title{
-    grid-column: 1;
-    padding-left: 3rem ;
-    padding-bottom: 3rem;
-    font-size:7rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0rem;
-    line-height:0.95;
-    }
+            grid-column: 1;
+            padding-left: 3rem ;
+            padding-bottom: 3rem;
+            font-size:7rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0rem;
+            line-height:0.95;
+          }
     .photo1{
     grid-column: 7/ -1;
     width: 100%;   
     height: auto; 
     object-fit: cover;
     margin-top: -2.5rem;
-    /*border-left: 0.1rem solid var(--accent1);*/
-}
+    }
     .right{
-    margin-top: 5rem;
+    margin-top: 3rem;
     grid-column: 7/ -1;
-    text-align: right;
+    text-align: left;
     margin-right: 3rem;
+    
+    .small {
+        font-size: 1.3rem;      
+        line-height: 1.5;
+        color: var(--accent1);
+        opacity: 0.8;     
+        margin-top: 0.3rem;     
+        font-style: italic;     
+    }
+    
+    }
+    .featured-section {
+    grid-column: 1/ -1;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    .divInFE {
+            margin-left: -2rem;
+    }
     }
 
 </style>

@@ -1,4 +1,7 @@
-@import 'tailwindcss-preflight/preflight.css';
+@import 'tailwindcss-preflight/preflight.css'; 
+/*i am not using tailwind, i just find this the easiest way to get rid of 1999 <a> styles*/
+
+
 
 *, *::before, *::after {
     margin: 0;

@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Contact | Hem of the Garment" description="Get in touch.">
+    <main>
+        <div class=" left contact-container">
+            <h2>Get in Touch</h2>
+            <p>Have questions about my essays or just want to say hello? I'd love to hear from you.</p>
+            
+            <a href="mailto:sebastian.mihail.raducu@gmail.com" id="emailBtn" class="contact-btn" target="_blank">
+                Send me an Email
+            </a>
+            
+            
+            <div class="email-display">
+                sebastian.mihail.raducu@gmail.com
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    main {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0.2rem;
+        align-items: start;
+        grid-auto-flow: row dense;
+    }
+    .left {
+        margin-top: 5rem;
+        grid-column: 2 / span 6;
+        text-align: left;
+        margin-right: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .contact-container h2 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        font-weight: normal;
+        color: var(--maincol);
+    }
+    
+    .contact-container p {
+        font-size: 1.5rem;
+        color: var(--textcol);
+        opacity: 0.9;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background-color: var(--textcol);
+        color: var(--bgcol);
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 1.5rem;
+        text-align: center;
+        transition: opacity 0.2s ease, background-color 0.2s ease;
+        align-self: flex-start;
+    }
+    
+    .contact-btn:hover {
+        background-color: var(--maincol);
+        opacity: 1;
+    }
+
+    .email-display {
+        font-family: monospace;
+        background-color: var(--lowlight1);
+        color: var(--highlight1);
+        padding: 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--accent1);
+        font-size: 1.3rem;
+        align-self: flex-start;
+        word-break: break-all;
+    }
+</style>

@@ -1,0 +1,49 @@
+---
+interface Props {
+    title: string;
+    date: string;
+    description: string;
+    url: string;
+}
+
+const { title, date, description, url } = Astro.props;
+---
+<a href={url} class="essay-link">
+    <div class="essay">
+        <h3>{title}</h3>
+        <div class="essay-date">{date}</div>
+        <p>{description}</p>
+    </div>
+</a>
+
+<style>
+    .essay-link {
+        text-decoration: none !important;
+        color: inherit;
+        display: block;
+        transition: opacity 0.2s ease-in-out;
+    }
+    .essay-link:hover {
+        opacity: 0.8;
+    }
+    .essay {
+        padding: 1rem 0;
+    }
+    h3 {
+        font-size: 2.4rem;
+        font-weight: normal;
+        color: var(--maincol);
+    }
+    .essay-date {
+        font-size: 1.5rem;
+        color: var(--accent1);
+        font-style: italic;
+        margin-bottom: 0.8rem;
+        opacity: 0.8;
+    }
+    p {
+        font-size: 1.8rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+</style>

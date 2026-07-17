@@ -1,0 +1,86 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+    const essayEntries = await getCollection('essays');
+    return essayEntries.map(entry => ({
+        params: { id: entry.id },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={entry.data.title} description={entry.data.description}>
+    <main class="essay-container">
+        <header class="essay-header">
+            <h1>{entry.data.title}</h1>
+            <time>{entry.data.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</time> <!-- the documentation is crazy -->
+            <div class="divider"></div>
+        </header>
+
+        <article class="prose">
+            <Content />
+        </article>
+    </main>
+</Layout>
+
+<style>
+    .essay-container {
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+    .essay-header h1 {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+    }
+    time {
+        color: var(--maincol);
+        font-style: italic;
+    }
+    
+</style>
+
+<style is:global>
+    .essay-container { 
+        max-width: 90%;
+        margin: 0 auto; 
+        padding: 4rem 1.5rem; 
+    }
+
+    .prose p{font-size: 1.60rem;
+    line-height: 1.7;
+    margin-bottom: 5rem; 
+    }
+    .prose p:last-of-type {
+        margin-bottom: 0;
+    }
+    .prose img {
+        max-width: 100%;  
+        height: auto; 
+        display: block;
+        margin: 0rem auto;
+    }
+  
+    .img-full {
+        display: block;
+        width: 100%;
+        margin: 2.5rem 0;
+        clear: both;
+    }
+
+    @media (min-width: 768px) {
+        .img-pull-4, .img-pull-3, .img-pull-2 {
+            float: right;
+            clear: right;
+            margin: 0.5rem 0 1.5rem 2.5rem;
+        }
+        .img-pull-4 { width: 33.333%; }
+        .img-pull-3 { width: 25%; }
+        .img-pull-2 { width: 16.666%; }
+    }
+</style>

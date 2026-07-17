@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import EssayCard from '../components/EssayCard.astro';
+import Divider from '../components/Divider.astro';
+
+const allEssays = await getCollection('essays');
+const sortedEssays = allEssays.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Essays | Hem of the Garment" description="All my non-Comp-Sci projects and essays.">
+    <main>
+        <div class="title">
+            <span>Essays</span>
+        </div>
+        
+        <div class="p right">
+           
+        </div>
+
+        <div class="essays-section">
+            <Divider color='#9998a5' className="divInFE" />
+            
+            {sortedEssays.map(essay => (
+                <EssayCard 
+                    title={essay.data.title}
+                    date={essay.data.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                    description={essay.data.description}
+                    url={`/essays/${essay.id}`}
+                />
+                <Divider color='#9998a5' className="divInFE" />
+            ))}
+        </div>
+    </main>
+</Layout>
+
+<style>
+    main {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0.2rem;
+        align-items: start;
+        grid-auto-flow: row dense;
+    }
+    .title {
+        grid-column: 1 / span 5; 
+        padding-left: 3rem;
+        padding-bottom: 3rem;
+        font-size: 7rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0rem;
+        line-height: 0.95;
+    }
+    .right {
+        margin-top: 5rem;
+        grid-column: 7 / -1;
+        text-align: left;
+        margin-right: 3rem;
+    }
+    .essays-section {
+        grid-column: 1 / -1;
+        margin-left: 3rem;
+        margin-top: 3rem;
+        
+    }
+</style>
