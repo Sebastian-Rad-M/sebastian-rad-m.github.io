@@ -1,35 +1,43 @@
 @import 'tailwindcss-preflight/preflight.css'; 
-/*i am not using tailwind, i just find this the easiest way to get rid of 1999 <a> styles*/
-
-
 
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-    
+    font-family: "Garamond", "Baskerville", "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 }
 
-:root{
-            --bgcol:#2f2a26;
-            --maincol:#ead38f;
-            --textcol:#e9e4e0;
-            --accent1:#e9e4e0;
-            --accent2:#ccc900;
-            --highlight1:#Afeeee;
-            --lowlight1:#221E1B;
-            }
+:root {
+    --bgcol: #2f2a26;
+    --maincol: #ead38f;
+    --textcol: #e9e4e0;
+    --accent1: #e9e4e0;
+    --accent2: #ccc900;
+    --highlight1: #Afeeee;
+    --lowlight1: #221E1B;
+    
+    /* RGB values for alpha transparency (glassmorphism) */
+    --bgcol-rgb: 47, 42, 38;
+    --maincol-rgb: 234, 211, 143;
+    --textcol-rgb: 233, 228, 224;
+    
+    --transition-slow: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-fast: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 :root.light {
-            --bgcol:#2f2a26;
-            --maincol:#ead38f;
-            --accent1:#e9e4e0;
-            --accent2:#ccc900;
-            --highlight1:#Afeeee;
- } 
+    --bgcol: #2f2a26;
+    --maincol: #ead38f;
+    --accent1: #e9e4e0;
+    --accent2: #ccc900;
+    --highlight1: #Afeeee;
+} 
+
 html {
     background-color: var(--bgcol);
+    scroll-behavior: smooth;
 }
+
 body {
     color: var(--textcol);
     font-size: 2.2rem;
@@ -39,12 +47,57 @@ body {
     max-width: 1920px;
     margin-left: auto;
     margin-right: auto;
+    background: radial-gradient(circle at top right, rgba(var(--maincol-rgb), 0.05), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(var(--highlight1-rgb), 0.03), transparent 40%);
+    background-attachment: fixed;
+    min-height: 100vh;
 }
+
 .divider { 
     white-space: nowrap;
-      height: 1px;
-      margin: 1rem ;
-      --divider-color: var(--accent1);
-      background-color: var(--divider-color);
-      
+    height: 1px;
+    margin: 1rem;
+    --divider-color: rgba(var(--textcol-rgb), 0.15);
+    background-color: var(--divider-color);
+    position: relative;
+    border: none;
+    background: linear-gradient(90deg, transparent, var(--divider-color) 20%, var(--divider-color) 80%, transparent);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s var(--transition-slow) forwards;
+    opacity: 0;
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s var(--transition-slow) forwards;
+    opacity: 0;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* Custom selection */
+::selection {
+    background-color: rgba(var(--maincol-rgb), 0.3);
+    color: var(--maincol);
 }

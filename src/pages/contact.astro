@@ -2,17 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Contact | Hem of the Garment" description="Get in touch.">
-    <main>
-        <div class=" left contact-container">
-            <h2>Get in Touch</h2>
-            <p>Have questions about my essays or just want to say hello? I'd love to hear from you.</p>
+    <main class="animate-fade-in-up">
+        <div class="left contact-container">
+            <h2 class="animate-fade-in-up delay-100">Get in Touch</h2>
+            <p class="animate-fade-in-up delay-200">Have questions about my essays or just want to say hello? I'd love to hear from you.</p>
             
-            <a href="mailto:sebastian.mihail.raducu@gmail.com" id="emailBtn" class="contact-btn" target="_blank">
+            <a href="mailto:sebastian.mihail.raducu@gmail.com" id="emailBtn" class="contact-btn animate-fade-in-up delay-300" target="_blank">
                 Send me an Email
             </a>
             
-            
-            <div class="email-display">
+            <div class="email-display animate-fade-in-up delay-400">
                 sebastian.mihail.raducu@gmail.com
             </div>
         </div>
@@ -23,60 +22,93 @@ import Layout from '../layouts/Layout.astro';
     main {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        gap: 0.2rem;
+        gap: 2rem;
         align-items: start;
         grid-auto-flow: row dense;
+        min-height: 60vh;
     }
     .left {
-        margin-top: 5rem;
-        grid-column: 2 / span 6;
-        text-align: left;
-        margin-right: 3rem;
+        margin-top: 8rem;
+        grid-column: 3 / span 8;
+        text-align: center;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        align-items: center;
+        gap: 2.5rem;
     }
     
     .contact-container h2 {
-        font-size: 3rem;
+        font-size: clamp(4rem, 6vw, 6rem);
         margin-bottom: 0.5rem;
         font-weight: normal;
         color: var(--maincol);
+        text-shadow: 0 4px 20px rgba(var(--maincol-rgb), 0.15);
     }
     
     .contact-container p {
-        font-size: 1.5rem;
+        font-size: 2.2rem;
         color: var(--textcol);
         opacity: 0.9;
+        max-width: 800px;
+        line-height: 1.5;
     }
 
     .contact-btn {
         display: inline-block;
-        padding: 1rem 2.5rem;
-        background-color: var(--textcol);
-        color: var(--bgcol);
+        padding: 1.2rem 3.5rem;
+        background-color: transparent;
+        color: var(--maincol);
         text-decoration: none;
-        border-radius: 4px;
-        font-size: 1.5rem;
+        border-radius: 40px;
+        font-size: 1.8rem;
         text-align: center;
-        transition: opacity 0.2s ease, background-color 0.2s ease;
-        align-self: flex-start;
+        transition: all var(--transition-slow);
+        border: 1px solid rgba(var(--maincol-rgb), 0.3);
+        position: relative;
+        overflow: hidden;
+        margin-top: 1rem;
+    }
+
+    .contact-btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(var(--maincol-rgb), 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform var(--transition-slow);
+        z-index: -1;
     }
     
     .contact-btn:hover {
-        background-color: var(--maincol);
-        opacity: 1;
+        background-color: rgba(var(--maincol-rgb), 0.05);
+        border-color: var(--maincol);
+        box-shadow: 0 0 20px rgba(var(--maincol-rgb), 0.15);
+        transform: translateY(-2px);
+    }
+
+    .contact-btn:hover::before {
+        transform: translateX(100%);
     }
 
     .email-display {
         font-family: monospace;
-        background-color: var(--lowlight1);
+        background-color: rgba(var(--lowlight1-rgb), 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         color: var(--highlight1);
-        padding: 1.5rem;
-        border-radius: 4px;
-        border: 1px solid var(--accent1);
-        font-size: 1.3rem;
-        align-self: flex-start;
+        padding: 1.5rem 2.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(var(--highlight1-rgb), 0.2);
+        font-size: 1.5rem;
         word-break: break-all;
+        margin-top: 2rem;
+        transition: all var(--transition-slow);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .email-display:hover {
+        border-color: rgba(var(--highlight1-rgb), 0.5);
+        box-shadow: 0 4px 25px rgba(var(--highlight1-rgb), 0.15);
+        transform: translateY(-2px);
     }
 </style>

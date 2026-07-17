@@ -4,82 +4,142 @@ import EssayCard from '../components/EssayCard.astro';
 import Divider from '../components/Divider.astro';
 import { Image } from 'astro:assets';
 import paradiseL from '../assets/siene.png';  
+
+    import { getCollection } from 'astro:content';
+    const allEssays = await getCollection('essays');  
+    const featuredEssay = allEssays.find(essay => essay.data.featured) 
+        ?? allEssays.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+
 ---
 <Layout title="Hem of the Garment" description="">
-     <main>
+     <main class="animate-fade-in-up">
         <div class="title"><span>Hem</span> 
             <span>of the</span> 
             <span>Garment</span>   
         </div>
-        <Image src={paradiseL} alt="" class="photo1" />
         
-        <div class="p right">
+        <div class="image-wrapper animate-fade-in delay-200">
+            <Image src={paradiseL} alt="" class="photo1" />
+        </div>
+        
+        <div class="p right animate-fade-in-up delay-300">
             This is where I keep my non-Comp-Sci projects. Enjoy a royalty free photo of Seine. 
-            <div class="small"> No creative work on any of these pages has been done with any help from AI.</div>
+            <div class="small">No creative work on any of these pages has been done with any help from AI.</div>
         </div>
 
-        <div class="featured-section">
-             <h2>Featured essay:</h2>
-            <Divider color='#9998a5' className="divInFE" />
-            <EssayCard 
-                title="An archetypal analysis of Heathers, The Musical"
-                date="January 2026"
-                description="bla bla"
-                url="/essays/heathers"
-            />
-        </div>
-            </main>
+          <div class="featured-section animate-fade-in-up delay-400">
+        <h2 class="featured-title">Featured essay:</h2>
+        <Divider color='rgba(var(--textcol-rgb), 0.15)' className="divInFE" />
+        
+        <EssayCard 
+            title={featuredEssay.data.title}
+            date={featuredEssay.data.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+            description={featuredEssay.data.description}
+            url={`/essays/${featuredEssay.id}`}
+        />
+    </div>
+  
+
+    </main>
 </Layout>
 
 <style>
-    main{
+    main {
          display: grid;
          grid-template-columns: repeat(12, 1fr);
-         gap: 0.2rem;
+         gap: 2rem;
          align-items: start;
          grid-auto-flow: row dense;
-        }
-    .title{
-            grid-column: 1;
-            padding-left: 3rem ;
-            padding-bottom: 3rem;
-            font-size:7rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0rem;
-            line-height:0.95;
-          }
-    .photo1{
-    grid-column: 7/ -1;
-    width: 100%;   
-    height: auto; 
-    object-fit: cover;
-    margin-top: -2.5rem;
+         padding-bottom: 5rem;
     }
-    .right{
-    margin-top: 3rem;
-    grid-column: 7/ -1;
-    text-align: left;
-    margin-right: 3rem;
-    
-    .small {
-        font-size: 1.3rem;      
-        line-height: 1.5;
+    .title {
+        grid-column: 1 / span 6;
+        padding-left: 3rem;
+        padding-bottom: 3rem;
+        font-size: clamp(6rem, 8vw, 10rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        line-height: 0.9;
+        color: var(--textcol);
+        text-shadow: 0 4px 20px rgba(var(--maincol-rgb), 0.15);
+    }
+    .indent {
+        padding-left: 10%;
+        font-style: italic;
         color: var(--accent1);
-        opacity: 0.8;     
-        margin-top: 0.3rem;     
-        font-style: italic;     
+        font-size: 0.8em;
     }
     
+    .image-wrapper {
+        grid-column: 7 / -1;
+        position: relative;
+        margin-top: -1rem;
+        margin-right: 3rem;
     }
+
+    .photo1 {
+        width: 100%;   
+        height: auto; 
+        object-fit: cover;
+        border-radius: 4px;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        transition: transform var(--transition-slow);
+    }
+
+    .image-glow {
+        position: absolute;
+        top: 10%; left: 10%; right: 10%; bottom: -5%;
+        background: var(--maincol);
+        filter: blur(40px);
+        opacity: 0.15;
+        z-index: 1;
+        transition: opacity var(--transition-slow);
+    }
+
+    .image-wrapper:hover .image-glow {
+        opacity: 0.25;
+    }
+
+    .right {
+        grid-column: 7 / -1;
+        text-align: left;
+        margin-right: 3rem;
+        font-size: 2rem;
+        color: var(--textcol);
+        margin-top: 1rem;
+    }
+
+    .small {
+        font-size: 1.4rem;      
+        line-height: 1.6;
+        color: var(--accent1);
+        opacity: 0.6;     
+        margin-top: 1.5rem;     
+        font-style: italic;
+        letter-spacing: 0.5px;
+    }
+    
     .featured-section {
-    grid-column: 1/ -1;
-    margin-left: 3rem;
-    margin-top: 3rem;
+        grid-column: 1 / -1;
+        margin-left: 3rem;
+        margin-top: 6rem;
+        margin-right: 3rem;
+    }
+
+    .featured-title {
+        font-size: 2rem;
+        font-weight: normal;
+        font-style: italic;
+        color: var(--accent1);
+        opacity: 0.8;
+        margin-bottom: 0.5rem;
+    }
+
     .divInFE {
-            margin-left: -2rem;
+        margin-left: 0;
+        margin-right: 0;
     }
-    }
-
 </style>
-

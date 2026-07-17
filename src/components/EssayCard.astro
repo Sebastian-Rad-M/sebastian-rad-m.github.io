@@ -8,11 +8,11 @@ interface Props {
 
 const { title, date, description, url } = Astro.props;
 ---
-<a href={url} class="essay-link">
+<a href={url} class="essay-link animate-fade-in-up delay-100">
     <div class="essay">
-        <h3>{title}</h3>
+        <h3 class="essay-title">{title}</h3>
         <div class="essay-date">{date}</div>
-        <p>{description}</p>
+        <p class="essay-desc">{description}</p>
     </div>
 </a>
 
@@ -21,29 +21,58 @@ const { title, date, description, url } = Astro.props;
         text-decoration: none !important;
         color: inherit;
         display: block;
-        transition: opacity 0.2s ease-in-out;
+        transition: transform var(--transition-slow), opacity var(--transition-slow);
+        position: relative;
     }
+    
+    .essay-link::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -1rem; right: -1rem; bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(var(--maincol-rgb), 0.03), transparent);
+        opacity: 0;
+        border-radius: 8px;
+        transition: opacity var(--transition-slow);
+        z-index: -1;
+    }
+
     .essay-link:hover {
-        opacity: 0.8;
+        transform: translateX(10px);
     }
+
+    .essay-link:hover::before {
+        opacity: 1;
+    }
+
     .essay {
-        padding: 1rem 0;
+        padding: 1.5rem 0;
     }
-    h3 {
-        font-size: 2.4rem;
+    .essay-title {
+        font-size: 2.6rem;
         font-weight: normal;
         color: var(--maincol);
+        transition: color var(--transition-fast), text-shadow var(--transition-fast);
+        margin-bottom: 0.5rem;
     }
+    
+    .essay-link:hover .essay-title {
+        color: var(--highlight1);
+        text-shadow: 0 0 15px rgba(var(--highlight1-rgb), 0.3);
+    }
+
     .essay-date {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         color: var(--accent1);
         font-style: italic;
-        margin-bottom: 0.8rem;
-        opacity: 0.8;
+        margin-bottom: 1rem;
+        opacity: 0.7;
+        letter-spacing: 0.5px;
     }
-    p {
-        font-size: 1.8rem;
-        line-height: 1.5;
+    .essay-desc {
+        font-size: 1.7rem;
+        line-height: 1.6;
         margin: 0;
+        color: var(--textcol);
+        opacity: 0.9;
     }
 </style>
