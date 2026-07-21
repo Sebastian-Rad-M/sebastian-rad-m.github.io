@@ -52,12 +52,30 @@ const { Content } = await render(entry);
         padding: 4rem 1.5rem; 
     }
 
-    .prose p{font-size: 1.60rem;
-    line-height: 1.7;
-    margin-bottom: 5rem; 
+    .prose p {
+        font-size: 1.70rem;
+        line-height: 1.7;
+        margin-bottom: 2rem; 
     }
     .prose p:last-of-type {
         margin-bottom: 0;
+    }
+    .prose ul, .prose ol {
+        font-size: 1.40rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        padding-left: 2.5rem;
+    }
+    .prose li {
+        margin-bottom: 0.8rem;
+    }
+    .prose a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+    .prose a:hover {
+        color: var(--maincol, #666);
     }
     .prose img {
         max-width: 100%;  
@@ -74,7 +92,7 @@ const { Content } = await render(entry);
     }
 
     @media (min-width: 768px) {
-        .img-pull-4, .img-pull-3, .img-pull-2 {
+        .img-pull-4, .img-pull-3, .img-pull-2, .img-pull-1 {
             float: right;
             clear: right;
             margin: 0.5rem 0 1.5rem 2.5rem;
@@ -82,5 +100,6 @@ const { Content } = await render(entry);
         .img-pull-4 { width: 33.333%; }
         .img-pull-3 { width: 25%; }
         .img-pull-2 { width: 16.666%; }
+        .img-pull-1 {width: 15%;}
     }
 </style>

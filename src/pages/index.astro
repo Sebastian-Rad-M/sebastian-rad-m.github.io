@@ -3,17 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import EssayCard from '../components/EssayCard.astro';
 import Divider from '../components/Divider.astro';
 import { Image } from 'astro:assets';
-import paradiseL from '../assets/siene.png';  
+import paradiseL from '../assets/Siene.png';  
+import { getCollection } from 'astro:content';
 
-    import { getCollection } from 'astro:content';
-    const allEssays = await getCollection('essays');  
-    const featuredEssay = allEssays.find(essay => essay.data.featured) 
-        ?? allEssays.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
-
+const allEssays = await getCollection('essays');  
+const featuredEssay = allEssays.find(essay => essay.data.featured) 
+    ?? allEssays.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 ---
 <Layout title="Hem of the Garment" description="">
-     <main class="animate-fade-in-up">
-        <div class="title"><span>Hem</span> 
+    <main class="animate-fade-in-up">
+        <div class="title">
+            <span>Hem</span> 
             <span>of the</span> 
             <span>Garment</span>   
         </div>
@@ -27,19 +27,17 @@ import paradiseL from '../assets/siene.png';
             <div class="small">No creative work on any of these pages has been done with any help from AI.</div>
         </div>
 
-          <div class="featured-section animate-fade-in-up delay-400">
-        <h2 class="featured-title">Featured essay:</h2>
-        <Divider color='rgba(var(--textcol-rgb), 0.15)' className="divInFE" />
-        
-        <EssayCard 
-            title={featuredEssay.data.title}
-            date={featuredEssay.data.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-            description={featuredEssay.data.description}
-            url={`/essays/${featuredEssay.id}`}
-        />
-    </div>
-  
-
+        <div class="featured-section animate-fade-in-up delay-400">
+            <h2 class="featured-title">Featured essay:</h2>
+            <Divider color='rgba(var(--textcol-rgb), 0.15)' className="divInFE" />
+            
+            <EssayCard 
+                title={featuredEssay.data.title}
+                date={featuredEssay.data.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                description={featuredEssay.data.description}
+                url={`/essays/${featuredEssay.id}`}
+            />
+        </div>
     </main>
 </Layout>
 
