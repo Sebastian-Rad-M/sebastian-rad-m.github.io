@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R.Sebastian</title>
+  <!--this page is so distinctly diffrent from anything else from the site, i find its easier to keep it an island -->
+    
+  <style>
+    :root {
+      --black: #000000;
+      --blue: #0000AA;
+      --green: #00AA00;
+      --cyan: #00AAAA;
+      --red: #AA0000;
+      --magenta: #AA00AA;
+      --brown: #AA5500;
+      --light-gray: #AAAAAA;
+      --dark-gray: #555555;
+      --light-blue: #5555FF;
+      --light-green: #55FF55;
+      --light-cyan: #55FFFF;
+      --light-red: #FF5555;
+      --light-magenta: #FF55FF;
+      --yellow: #FFFF55;
+      --white: #FFFFFF;
+      
+    }
+    a{color:inherit;text-decoration: none;}
+    @font-face {
+      font-family: 'Perfect DOS VGA 437';
+      src: url('/fonts/Perfect%20DOS%20VGA%20437.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #ffffff;
+      font-family: 'Perfect DOS VGA 437', 'VT323', 'Courier New', Courier, monospace;
+      font-size: 1.1rem;
+      line-height: 1;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: pixelated;
+      box-sizing: border-box;
+      border-radius: 0 !important;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tos-menubar {
+      flex-shrink: 0;
+      height: 4rem;
+      font-size: 2.1rem;
+      background-color: var(--blue);
+      color: var(--white);
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      gap: 2rem;
+      z-index: 10;
+      
+      span {
+        margin-left: 1rem;
+        background-color: inherit;
+      }
+    }
+
+    .main {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      box-sizing: border-box;
+      background-color: var(--white);
+      border: 14px solid var(--green);
+      box-shadow: inset 0 0 0 2px var(--black), 0 0 0 2px var(--black);
+      outline: 2px solid var(--black);
+      outline-offset: -8px;
+      display: flex;
+      flex-direction: column;
+      .bottom{
+       margin-top: auto;
+       margin-bottom: 0px; font-size: 16px;  
+        } 
+    }
+
+  .border-label {
+      position: absolute;
+      background-color: var(--green);
+      color: var(--black);
+      padding: 0 4px;
+     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    height: 16px;
+    line-height: 1;
+      user-select: none;
+      z-index: 2;}
+.top-left {
+  top: -14px;
+  left: 0px;
+}
+
+.top-center {
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.bottom-left {
+  bottom: -14px;
+  left: 12px;
+}
+
+.bottom-right {
+  bottom: -14px;
+  right: 12px;
+}
+.line{
+  padding: 0px 0 0 3px;
+  font-size: 32px;
+  margin-bottom: -8px;
+.blinker {
+  background-color: var(--black);
+  color: var(--white);
+  width: 1ch;
+  display: inline-block;
+  }
+} 
+
+</style>  
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script> 
+  <script is:inline>new Lenis({autoRaf: true,autoToggle: true,anchors: true,allowNestedScroll: true,naiveDimensions: true,stopInertiaOnNavigate: true})</script>
+</head>
+<body>
+  <div class="tos-menubar">
+    <span>Home</span>
+    <span>GitHub</span>
+    <span>Resume</span>
+    <span><a href="/">Non-CS</a></span>
+  </div>
+  <div class="main">
+  <span class="border-label top-left">INFO</span>
+  <span class="border-label bottom-left">=Undo:002=</span>
+  <span class="border-label bottom-right">Line:0001 Col:0001</span>
+    <div class="line"> Raducu Mihail-Sebastian: </div>
+    <div class="line"> Student@FMI </div>
+    <div class="line"> Teaching</div>
+    <div class="line"> Contact:sebastian.mihail.raducu@gmail.com <span class="blinker">⠀</span></div> <!--invisible whitespace,dont touch-->
+    <div class="line bottom"> This page is meant to be refrencing TempleOS design. 
+    <!-- For actuall front-end designs see: my blog, postcardsmarket <--> </div>
+
+
+
+
+</div>
+
+
+<script>
+  function invertColors(element: HTMLElement | null): void {
+    if (!element) return;
+    const computed = window.getComputedStyle(element);
+    const currentBg = element.style.backgroundColor || computed.backgroundColor;
+    const currentColor = element.style.color || computed.color;
+
+    element.style.backgroundColor = currentColor;
+    element.style.color = currentBg;
+  }
+
+  function invertOnInterval(element: HTMLElement | null, intervalMs: number = 1000): number | null {
+    if (!element) return null;
+    return window.setInterval(() => invertColors(element), intervalMs);
+  }
+
+  function invertOnHover(element: HTMLElement | null): void {
+    if (!element) return;
+    element.addEventListener('mouseenter', () => invertColors(element));
+    element.addEventListener('mouseleave', () => invertColors(element));
+  }
+
+  document.querySelectorAll<HTMLElement>('.tos-menubar span').forEach((item) => {
+    invertOnHover(item);
+  });
+
+  const menuLabel = document.querySelector<HTMLElement>('.border-label.top-left');
+  const blinker = document.querySelector<HTMLElement>('.blinker');
+
+  invertOnInterval(menuLabel, 300);
+  invertOnInterval(blinker, 300);
+
+</script>
+</body>
+</html>
