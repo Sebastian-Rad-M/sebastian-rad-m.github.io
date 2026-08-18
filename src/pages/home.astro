@@ -85,6 +85,7 @@
       outline-offset: -8px;
       display: flex;
       flex-direction: column;
+  
       
       .line{
           padding: 0px 0 0 3px;
@@ -98,15 +99,29 @@
           }
         } 
         .red{color: var(--red);}
-
+ .blue { color: var(--blue); }
       .bottom{
        margin-top: auto;
        margin-bottom: 0px; font-size: 16px;  
         } 
     }
+   
 
+.terminal-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 4px; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.terminal-scroll::-webkit-scrollbar {
+  display: none;
+}
   .border-label {
       position: absolute;
+    
       background-color: var(--green);
       color: var(--black);
       padding: 0 4px;
@@ -137,7 +152,22 @@
   bottom: -14px;
   right: 12px;
 }
+#terminal-input {
+  top: 0;    
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  border: none;
+  outline: none;
+  padding: 0;
+}
 
+#input-display {
+  white-space: pre-wrap; 
+  word-break: break-all; 
+}
 
 </style>  
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
@@ -152,10 +182,11 @@
     <span><a href="/">Non-CS</a></span>
   </div>
   <div class="main">
-  <span class="border-label top-left">INFO</span>
+  <span class="border-label top-left blinker">INFO</span>
   <span class="border-label bottom-left">=Undo:002=</span>
   <span class="border-label bottom-right">Line:0001 Col:0001</span>
-    <div class="line"> Raducu Mihail-Sebastian: </div>
+    <div id="terminal-scroll" class="terminal-scroll">
+      <div class="line"> Raducu Mihail-Sebastian: </div>
     <div class="line"> Student@<a href="https://fmi.unibuc.ro/">FMI</a> </div>
     <div class="line"> Teaching</div>
     <div class="line"> Contact:sebastian.mihail.raducu@gmail.com </div> <!--invisible whitespace,dont touch-->
@@ -170,9 +201,10 @@
     <div class="line"> Perfect information but uncomputable games</div>
     <div class="line"> Literature</div>
     <div class="line"> Philosophical debate</div>
-
-    
-    <div class="line"><span class="cursor blinker">⠀</span></div>
+<div class="line">
+  <span class="prompt"> </span><span id="input-display"></span><span class="cursor blinker">⠀</span>
+  <input type="text" id="terminal-input" spellcheck="false" autofocus autocomplete="off" />
+</div></div>
 </div>
 
 
@@ -203,11 +235,81 @@
   });
 
   const menuLabel = document.querySelector<HTMLElement>('.border-label.top-left');
-  const blinker = document.querySelector<HTMLElement>('.blinker');
 
-  invertOnInterval(menuLabel, 300);
-  invertOnInterval(blinker, 300);
+  document.querySelectorAll<HTMLElement>('.blinker').forEach((item) => {
+  invertOnInterval(item, 300);
+  });
+    
+const terminalInput = document.getElementById('terminal-input') as HTMLInputElement | null;
+  const inputDisplay = document.getElementById('input-display') as HTMLSpanElement | null;
+  const mainContainer = document.querySelector('.main') as HTMLElement | null;
+  const terminalScroll = document.getElementById('terminal-scroll') as HTMLElement | null;
 
+  if (terminalInput && inputDisplay && mainContainer && terminalScroll) {
+    
+    terminalInput.addEventListener('input', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      inputDisplay.textContent = target.value;
+    });
+
+    // Focus the hidden input if the user clicks anywhere inside the terminal box
+    mainContainer.addEventListener('click', () => {
+      terminalInput.focus();
+    });
+
+    terminalInput.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        e.preventDefault(); 
+        
+        const rawInput = terminalInput.value;
+        const command = rawInput.trim();
+        const inputLine = terminalInput.parentElement as HTMLElement;
+
+        const historyLine = document.createElement('div');
+        historyLine.className = 'line';
+        historyLine.textContent = `T:> ${rawInput}`; 
+        terminalScroll.insertBefore(historyLine, inputLine);
+
+        if (command.length > 0) {
+          const responseLine = document.createElement('div');
+          
+          responseLine.className = 'line'; 
+          responseLine.style.color = 'var(--blue)'; 
+          const cmdLower = command.toLowerCase();
+
+          if (cmdLower === 'philosophy') {
+            responseLine.textContent = 'it is theology, but that doesnt look the best on my resume. what i mean by it is filioque, ads and diffrent debates i find intresting intelectually, not religious fanaticism';
+          } 
+          else if (cmdLower === 'glow') {
+             
+              responseLine.textContent = 'You can see them if you\'re driving. You just run them over.';
+              responseLine.style.color = 'var(--light-green)'; 
+            }
+          else if (cmdLower === 'clear') {
+            const allLines = terminalScroll.querySelectorAll('.line');
+            allLines.forEach(line => {
+              if (line !== inputLine) line.remove();
+            });
+            responseLine.textContent = ''; 
+          } 
+          else {
+             responseLine.textContent = `&LexExcept &PrsStmt &LexStmt2Bin ERROR: Undefined identifier at "${command}" ~/Tmp.DD.Z.0003~/Tmp.DD.Z,3`;
+          }
+
+          if (responseLine.textContent !== '') {
+            terminalScroll.insertBefore(responseLine, inputLine);
+          }
+        }
+
+        // 3. Reset input
+        terminalInput.value = '';
+        inputDisplay.textContent = '';
+
+        // 4. Scroll to bottom of the new scroll container
+        terminalScroll.scrollTop = terminalScroll.scrollHeight;
+      }
+    });
+  }
 </script>
 </body>
 </html>
