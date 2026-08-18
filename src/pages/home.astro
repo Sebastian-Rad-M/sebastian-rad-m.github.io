@@ -85,6 +85,20 @@
       outline-offset: -8px;
       display: flex;
       flex-direction: column;
+      
+      .line{
+          padding: 0px 0 0 3px;
+          font-size: 32px;
+          margin-bottom: -8px;
+        .blinker {
+          background-color: var(--black);
+          color: var(--white);
+          width: 1ch;
+          display: inline-block;
+          }
+        } 
+        .red{color: var(--red);}
+
       .bottom{
        margin-top: auto;
        margin-bottom: 0px; font-size: 16px;  
@@ -123,17 +137,7 @@
   bottom: -14px;
   right: 12px;
 }
-.line{
-  padding: 0px 0 0 3px;
-  font-size: 32px;
-  margin-bottom: -8px;
-.blinker {
-  background-color: var(--black);
-  color: var(--white);
-  width: 1ch;
-  display: inline-block;
-  }
-} 
+
 
 </style>  
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
@@ -155,6 +159,11 @@
     <div class="line"> Student@FMI </div>
     <div class="line"> Teaching</div>
     <div class="line"> Contact:sebastian.mihail.raducu@gmail.com <span class="blinker">⠀</span></div> <!--invisible whitespace,dont touch-->
+    <div class="line red"> Favorite projects:</div>
+    <div class="line"> Luminomagus:C++ Rml rouguelike game demo from scratch</div>
+    <div class="line"> some</div>
+    <div class="line"> some</div>
+    
     <div class="line bottom"> This page is meant to be refrencing TempleOS design. 
     <!-- For actuall front-end designs see: my blog, postcardsmarket <--> </div>
 
