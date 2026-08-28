@@ -162,6 +162,7 @@
   border: none;
   outline: none;
   padding: 0;
+  resize: none;
 }
 
 #input-display {
@@ -203,7 +204,7 @@
     <div class="line"> Philosophical debate</div>
 <div class="line">
   <span class="prompt"> </span><span id="input-display"></span><span class="cursor blinker">⠀</span>
-  <input type="text" id="terminal-input" spellcheck="false" autofocus autocomplete="off" />
+  <textarea id="terminal-input" spellcheck="false" autofocus autocomplete="off"></textarea>
 </div></div>
 </div>
 
@@ -245,7 +246,7 @@
   invertOnInterval(item, 300);
   });
     
-const terminalInput = document.getElementById('terminal-input') as HTMLInputElement | null;
+const terminalInput = document.getElementById('terminal-input') as HTMLTextAreaElement | null;
   const inputDisplay = document.getElementById('input-display') as HTMLSpanElement | null;
   const mainContainer = document.querySelector('.main') as HTMLElement | null;
   const terminalScroll = document.getElementById('terminal-scroll') as HTMLElement | null;
@@ -253,7 +254,7 @@ const terminalInput = document.getElementById('terminal-input') as HTMLInputElem
   if (terminalInput && inputDisplay && mainContainer && terminalScroll) {
     
     terminalInput.addEventListener('input', (e: Event) => {
-      const target = e.target as HTMLInputElement;
+      const target = e.target as HTMLTextAreaElement;
       inputDisplay.textContent = target.value;
     });
 
@@ -264,6 +265,9 @@ const terminalInput = document.getElementById('terminal-input') as HTMLInputElem
 
     terminalInput.addEventListener('keydown', async (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
+        if (e.shiftKey) {
+            return;
+        }
         e.preventDefault(); 
         
         const rawInput = terminalInput.value;
@@ -272,6 +276,7 @@ const terminalInput = document.getElementById('terminal-input') as HTMLInputElem
 
         const historyLine = document.createElement('div');
         historyLine.className = 'line';
+        historyLine.style.whiteSpace = 'pre-wrap';
         historyLine.textContent = `T:> ${rawInput}`; 
         terminalScroll.insertBefore(historyLine, inputLine);
 
@@ -284,7 +289,10 @@ const terminalInput = document.getElementById('terminal-input') as HTMLInputElem
 
           if (cmdLower === 'philosophy') {
             responseLine.textContent = 'it is theology, but that doesnt look the best on my resume. what i mean by it is filioque, ads and diffrent debates i find intresting intelectually, not religious fanaticism';
-          } 
+          }
+          if (cmdLower === 'example') {
+            responseLine.textContent = 'I64 spawn_counter=0;U0 SpawnedTest(I64 val) {I64 i;for (i=0; i<5; i++) {spawn_counter += val;Yield;}}U0 Test13_Tasks() {spawn_counter = 0;I64 *expected_result=MAlloc(sizeof(I64)); *expected_result = 55; CTask *child=Spawn(&SpawnedTest, 10, "TestTask");I64 i;for (i=0;i<5;i++) {spawn_counter++;Yield;}Sleep(50);if (spawn_counter == *expected_result) {"PASS";} else {"FAIL";}Free(expected_result);}Test13_Tasks();';
+          }
           else if (cmdLower === 'glow') {
              
               responseLine.textContent = 'You can see them if you\'re driving. You just run them over.';
