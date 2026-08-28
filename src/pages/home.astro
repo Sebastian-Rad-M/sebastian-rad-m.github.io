@@ -189,16 +189,16 @@
       <div class="line"> Raducu Mihail-Sebastian: </div>
     <div class="line"> Student@<a href="https://fmi.unibuc.ro/">FMI</a> </div>
     <div class="line"> Teaching</div>
-    <div class="line"> Contact:sebastian.mihail.raducu@gmail.com </div> <!--invisible whitespace,dont touch-->
+    <div class="line"> Contact:sebastian.mihail.raducu@gmail.com</div>
     <div class="line red"> Favorite projects:</div>
-    <div class="line"> Luminomagus:C++ Rml roguelike game demo from scratch</div>
-    <div class="line"> Mdx parser</div>
+    <div class="line"> .HC compiler into Wasm, written in TS</div>
+    <div class="line"> Luminomagus:C++ Rml roguelike game demo</div>
     <div class="line"> RmlRaylib updated bridge</div>
     <div class="line red">Tech stack:</div>
     <div class="line">Languages: Ts, C++, C#, Python (in that order) </div>
     <div class="line">Tools: Github, Cmake, Astro</div>
-    <div class="line red">Intrests:</div>
-    <div class="line"> Perfect information but uncomputable games</div>
+    <div class="line red">Personal intrests:</div>
+    <div class="line"> Perfect information uncomputable games</div>
     <div class="line"> Literature</div>
     <div class="line"> Philosophical debate</div>
 <div class="line">
@@ -209,6 +209,11 @@
 
 
 <script>
+  import { Lexer } from '../lib/holyc/lexer.js';
+  import { Parser } from '../lib/holyc/parser.js';
+  import { Generator } from '../lib/holyc/generator.js';
+  import { Runtime } from '../lib/holyc/runtime.js';
+  import { TaskManager } from '../lib/holyc/scheduler.js';
   function invertColors(element: HTMLElement | null): void {
     if (!element) return;
     const computed = window.getComputedStyle(element);
@@ -257,7 +262,7 @@ const terminalInput = document.getElementById('terminal-input') as HTMLInputElem
       terminalInput.focus();
     });
 
-    terminalInput.addEventListener('keydown', (e: KeyboardEvent) => {
+    terminalInput.addEventListener('keydown', async (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
         e.preventDefault(); 
         
@@ -293,10 +298,55 @@ const terminalInput = document.getElementById('terminal-input') as HTMLInputElem
             responseLine.textContent = ''; 
           } 
           else {
-             responseLine.textContent = `&LexExcept &PrsStmt &LexStmt2Bin ERROR: Undefined identifier at "${command}" ~/Tmp.DD.Z.0003~/Tmp.DD.Z,3`;
+            try {
+              const tokens = new Lexer(command).tokenize();
+              const ast = new Parser(tokens).parse();
+              const generator = new Generator();
+              const wasmBinary = generator.generate(ast);
+              
+              let isFirstOutput = true;
+              const runtime = new Runtime({
+                stdout: (text) => {
+                  if (isFirstOutput) {
+                      terminalScroll.insertBefore(responseLine, inputLine);
+                      isFirstOutput = false;
+                  }
+                  const parts = text.split('\\n');
+                  for (let i = 0; i < parts.length; i++) {
+                      if (parts[i]) responseLine.appendChild(document.createTextNode(parts[i]));
+                      if (i < parts.length - 1) {
+                          responseLine.appendChild(document.createElement('br'));
+                      }
+                  }
+                  terminalScroll.scrollTop = terminalScroll.scrollHeight;
+                }
+              });
+              const taskManager = new TaskManager(runtime.memory);
+              
+              const importObject = runtime.getImportObject();
+              importObject.env = { ...importObject.env, ...taskManager.getImports() };
+              delete importObject.env?.memory;
+              
+              const wasmModule = await WebAssembly.compile(wasmBinary as any);
+              const instance = await WebAssembly.instantiate(wasmModule, importObject);
+              
+              runtime.memory.memory = instance.exports.memory as WebAssembly.Memory;
+              taskManager.setInstance(instance);
+              
+              const ex = instance.exports as any;
+              if (typeof ex._start === "function") {
+                taskManager.spawnMain(() => { ex._start(); });
+              } else if (typeof ex.Main === "function") {
+                taskManager.spawnMain(() => { ex.Main(); });
+              }
+            } catch (err: any) {
+              responseLine.style.color = 'var(--red)';
+              responseLine.textContent = `[Compiler Error] ${err.message || err}`;
+              terminalScroll.insertBefore(responseLine, inputLine);
+            }
           }
 
-          if (responseLine.textContent !== '') {
+          if (responseLine.textContent !== '' && !responseLine.parentNode) {
             terminalScroll.insertBefore(responseLine, inputLine);
           }
         }
