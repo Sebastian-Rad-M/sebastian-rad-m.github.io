@@ -29,6 +29,7 @@ const isHome = pathname === '/' || pathname === '/index.html' || pathname === '/
         background: linear-gradient(to bottom, rgba(var(--bgcol-rgb), 0.95) 20%, rgba(var(--bgcol-rgb), 0.7) 80%, transparent);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .nav-content {
         display: flex;
@@ -108,11 +109,11 @@ const isHome = pathname === '/' || pathname === '/index.html' || pathname === '/
     }
 
     @media (max-width: 768px) {
-        .titlecard {
-            padding-left: 1.2rem;
+        nav.nav-hidden {
+            transform: translateY(-100%);
         }
-        .titlecard a {
-            font-size: 1.8rem;
+        .titlecard {
+            display: none;
         }
         .menu {
             padding: 0 0.5rem;
@@ -126,3 +127,35 @@ const isHome = pathname === '/' || pathname === '/index.html' || pathname === '/
         }
     }
 </style>
+
+<script>
+    const nav = document.querySelector('nav');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+        if (window.innerWidth > 768) {
+            nav?.classList.remove('nav-hidden');
+            lastScrollY = window.scrollY;
+            return;
+        }
+
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY && currentScrollY > 60) {
+            nav?.classList.add('nav-hidden');
+        } else {
+            nav?.classList.remove('nav-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+</script>
