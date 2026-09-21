@@ -75,4 +75,16 @@ const { title, date, description, url } = Astro.props;
         color: var(--textcol);
         opacity: 0.9;
     }
+
+    @media (max-width: 768px) {
+        .essay-title {
+            font-size: 2rem;
+        }
+        .essay-desc {
+            font-size: 1.4rem;
+        }
+        .essay-link:hover {
+            transform: translateX(5px);
+        }
+    }
 </style>

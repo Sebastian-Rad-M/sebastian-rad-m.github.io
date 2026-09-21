@@ -70,4 +70,16 @@ const sortedEssays = allEssays.sort((a, b) => b.data.pubDate.valueOf() - a.data.
         margin-left: 0;
         margin-right: 0;
     }
+
+    @media (max-width: 768px) {
+        .title {
+            padding-left: 1.2rem;
+            padding-bottom: 1rem;
+        }
+        .essays-section {
+            margin-left: 1.2rem;
+            margin-right: 1.2rem;
+            margin-top: 1rem;
+        }
+    }
 </style>

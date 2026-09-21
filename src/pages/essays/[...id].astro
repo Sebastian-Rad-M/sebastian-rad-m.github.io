@@ -42,6 +42,12 @@ const { Content } = await render(entry);
         color: var(--maincol);
         font-style: italic;
     }
+
+    @media (max-width: 768px) {
+        .essay-header h1 {
+            font-size: 2.6rem;
+        }
+    }
     
 </style>
 
@@ -101,5 +107,19 @@ const { Content } = await render(entry);
         .img-pull-3 { width: 25%; }
         .img-pull-2 { width: 16.666%; }
         .img-pull-1 {width: 15%;}
+    }
+
+    @media (max-width: 768px) {
+        .essay-container {
+            max-width: 100%;
+            padding: 2rem 1rem;
+        }
+        .prose p {
+            font-size: 1.5rem;
+        }
+        .prose ul, .prose ol {
+            font-size: 1.3rem;
+            padding-left: 1.5rem;
+        }
     }
 </style>
